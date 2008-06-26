@@ -6,7 +6,7 @@ Summary:	Polish resources for Icedove
 Summary(pl.UTF-8):	Polskie pliki językowe dla Icedove
 Name:		icedove-lang-pl
 Version:	2.0.0.14
-Release:	1
+Release:	2
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
@@ -48,8 +48,8 @@ unzip pl-PL.jar locale/pl/branding/brand.dtd locale/pl/branding/brand.properties
 	locale/pl/messenger-newsblog/newsblog.properties
 sed -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
 	locale/pl/branding/brand.dtd locale/pl/branding/brand.properties
-sed -i -e 's/Thunderbird[a-z]*/Icedove/g;' locale/pl/messenger/start.dtd
-sed -i -e 's/Thunderbird/Icedove/g;' locale/pl/messenger-newsblog/newsblog.properties
+sed -i -e 's/Thunderbird/Icedove/g;' locale/pl/messenger/start.dtd \
+	locale/pl/messenger-newsblog/newsblog.properties
 grep -e '\<ENTITY' locale/pl/messenger/aboutDialog.dtd \
 	> locale/pl/messenger/aboutDialog.dtd.new
 sed -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
