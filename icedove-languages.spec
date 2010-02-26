@@ -5,12 +5,12 @@
 Summary:	Polish resources for Icedove
 Summary(pl.UTF-8):	Polskie pliki językowe dla Icedove
 Name:		icedove-lang-pl
-Version:	3.0.1
-Release:	2
+Version:	3.0.2
+Release:	1
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	24fb5db23baf9461ec01774e136ae8e3
+# Source0-md5:	3240913204f7055ff4025f1b6bd5b1bb
 URL:		http://www.thunderbird.pl/
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
