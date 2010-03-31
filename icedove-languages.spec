@@ -1,71 +1,100 @@
-#
 # TODO:
 #  - do something with *.rdf file, there is file conflict with other lang packages
-#
-Summary:	Polish resources for Icedove
-Summary(pl.UTF-8):	Polskie pliki językowe dla Icedove
-Name:		icedove-lang-pl
+Summary:	Language packs for Icedove
+Name:		icedove-languages
 Version:	3.0.4
 Release:	1
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
 # Source0-md5:	0d83cfe69ddbc19e927ace474ca6fd7f
-URL:		http://www.thunderbird.pl/
+URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 BuildRequires:	zip
-Requires:	icedove >= %{version}
-Provides:	icedove-lang-resources = %{version}
-Obsoletes:	mozilla-thunderbird-lang-pl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_icedovedir	%{_datadir}/icedove
-%define		_chromedir	%{_icedovedir}/chrome
+%define		icedovedir		%{_datadir}/icedove
+%define		chromedir		%{icedovedir}/chrome
 
 %description
+Language packs for Icedove.
+
+%package -n icedove-lang-pl
+Summary:	Polish resources for Icedove
+Summary(pl.UTF-8):	Polskie pliki językowe dla Icedove
+Group:		I18n
+URL:		http://www.thunderbird.pl/
+Requires:	icedove >= %{version}
+Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-pl
+
+%description -n icedove-lang-pl
 Polish resources for Icedove.
 
-%description -l pl.UTF-8
+%description -n icedove-lang-pl -l pl.UTF-8
 Polskie pliki językowe dla Icedove.
 
 %prep
+unpack() {
+set -x
+    local args="$1" file="$2"
+	local lang=$(basename $file .xpi)
+	%{__unzip} $args -d $lang $file
+
+	locale=$(awk -vl=$lang '$1 == l{print $2}' %{_builddir}/locales.txt)
+	cd $lang
+	install -d defaults/profile
+	sed -i -e "s@chrome/$lang@$locale@" chrome.manifest
+	[ $lang = $locale ] || mv chrome/$lang.jar chrome/$locale.jar
+	mv chrome.manifest chrome/$locale.manifest
+	mv install.rdf defaults/profile
+
+	# rebrand locale for Icedove
+	cd chrome
+	unzip -q $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
+		locale/$lang/messenger/aboutDialog.dtd \
+		locale/$lang/messenger-newsblog/newsblog.properties
+
+	sed -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
+		locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties
+	sed -i -e 's/Thunderbird/Icedove/g;' locale/$lang/messenger-newsblog/newsblog.properties
+
+	grep -e '\<ENTITY' locale/$lang/messenger/aboutDialog.dtd \
+		> locale/$lang/messenger/aboutDialog.dtd.new
+	sed -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
+		locale/$lang/messenger/aboutDialog.dtd.new
+	mv -f locale/$lang/messenger/aboutDialog.dtd.new locale/$lang/messenger/aboutDialog.dtd
+
+	zip -q0 $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
+		locale/$lang/messenger/aboutDialog.dtd \
+		locale/$lang/messenger-newsblog/newsblog.properties
+
+	rm -rf locale
+	cd ../..
+}
+%define __unzip unpack
+# LANGUAGE LOCALE
+cat <<'EOF' > locales.txt
+pl pl-PL
+EOF
+%setup -qcT -a 0
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_chromedir},%{_icedovedir}/{defaults/profile,searchplugins}}
+install -d $RPM_BUILD_ROOT{%{chromedir},%{icedovedir}/defaults/profile}
+for a in */chrome; do
+	cp -a $a/* $RPM_BUILD_ROOT%{chromedir}
+done
 
-unzip %{SOURCE0} -d $RPM_BUILD_ROOT%{_libdir}
-mv -f $RPM_BUILD_ROOT%{_libdir}/chrome/pl.jar $RPM_BUILD_ROOT%{_chromedir}/pl-PL.jar
-mv -f $RPM_BUILD_ROOT%{_libdir}/*.rdf $RPM_BUILD_ROOT%{_icedovedir}/defaults/profile
-#mv -f $RPM_BUILD_ROOT%{_libdir}/chrome/* $RPM_BUILD_ROOT%{_chromedir}
-cat $RPM_BUILD_ROOT%{_libdir}/chrome.manifest | sed 's: pl : pl-PL :g; s:chrome/pl:pl-PL:g ' \
-	> $RPM_BUILD_ROOT%{_chromedir}/pl-PL.manifest
-# rebrand locale for iceweasel
-cd $RPM_BUILD_ROOT%{_chromedir}
-unzip pl-PL.jar locale/pl/branding/brand.dtd locale/pl/branding/brand.properties \
-	locale/pl/messenger/aboutDialog.dtd \
-	locale/pl/messenger-newsblog/newsblog.properties
-sed -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
-	locale/pl/branding/brand.dtd locale/pl/branding/brand.properties
-sed -i -e 's/Thunderbird/Icedove/g;' locale/pl/messenger-newsblog/newsblog.properties
-grep -e '\<ENTITY' locale/pl/messenger/aboutDialog.dtd \
-	> locale/pl/messenger/aboutDialog.dtd.new
-sed -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
-	locale/pl/messenger/aboutDialog.dtd.new
-mv -f locale/pl/messenger/aboutDialog.dtd.new locale/pl/messenger/aboutDialog.dtd
-zip -0 pl-PL.jar locale/pl/branding/brand.dtd locale/pl/branding/brand.properties \
-	locale/pl/messenger/aboutDialog.dtd \
-	locale/pl/messenger-newsblog/newsblog.properties
-rm -f locale/pl/branding/brand.dtd locale/pl/branding/brand.properties \
-	locale/pl/messenger/aboutDialog.dtd \
-	locale/pl/messenger-newsblog/newsblog.properties
+# FIXME one language to dominate
+cp -a pl/defaults/profile/*.rdf $RPM_BUILD_ROOT%{icedovedir}/defaults/profile
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
+%post -n icedove-lang-pl
 cat << 'EOF'
 NOTE: You must also change your default useragent locale:
   Open Icedove and go to Edit>Preferences>Advenced>General>Config Editor then
@@ -74,9 +103,9 @@ NOTE: You must also change your default useragent locale:
 
 EOF
 
-%files
+%files -n icedove-lang-pl
 %defattr(644,root,root,755)
-%{_chromedir}/pl-PL.jar
-%{_chromedir}/pl-PL.manifest
-#%{_chromedir}/chromelist.txt
-%{_icedovedir}/defaults/profile/*.rdf
+%{chromedir}/pl-PL.jar
+%{chromedir}/pl-PL.manifest
+#%{chromedir}/chromelist.txt
+%{icedovedir}/defaults/profile/*.rdf
