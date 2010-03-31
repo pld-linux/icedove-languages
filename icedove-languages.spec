@@ -38,7 +38,6 @@ Polskie pliki językowe dla Icedove.
 
 %prep
 unpack() {
-set -x
     local args="$1" file="$2"
 	local lang=$(basename $file .xpi)
 	%{__unzip} $args -d $lang $file
