@@ -52,7 +52,7 @@ unpack() {
 
 	# rebrand locale for Icedove
 	cd chrome
-	unzip -q $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
+	%{__unzip} -q $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
 		locale/$lang/messenger/aboutDialog.dtd \
 		locale/$lang/messenger-newsblog/newsblog.properties
 
