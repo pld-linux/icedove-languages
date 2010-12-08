@@ -8,6 +8,8 @@ License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
 # Source0-md5:	38deb4a544b4055fd3dd8fbfd489393c
+Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
+# Source1-md5:	cbed77cb75b8158b5805b48686a4e836
 URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
@@ -20,6 +22,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Language packs for Icedove.
+
+%package -n icedove-lang-et
+Summary:	Estonian resources for Icedove
+Group:		I18n
+Requires:	icedove >= %{version}
+Provides:	icedove-lang-resources = %{version}
+
+%description -n icedove-lang-et
+Estonian resources for Icedove.
 
 %package -n icedove-lang-pl
 Summary:	Polish resources for Icedove
@@ -76,9 +87,10 @@ unpack() {
 %define __unzip unpack
 # LANGUAGE LOCALE
 cat <<'EOF' > locales.txt
+et et-EE
 pl pl-PL
 EOF
-%setup -qcT -a 0
+%setup -qcT -a0 -a1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -101,6 +113,11 @@ NOTE: You must also change your default useragent locale:
   to "pl-PL" then restart Icedove.
 
 EOF
+
+%files -n icedove-lang-et
+%defattr(644,root,root,755)
+%{chromedir}/et-EE.jar
+%{chromedir}/et-EE.manifest
 
 %files -n icedove-lang-pl
 %defattr(644,root,root,755)
