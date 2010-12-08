@@ -105,14 +105,27 @@ cp -a pl/defaults/profile/*.rdf $RPM_BUILD_ROOT%{icedovedir}/defaults/profile
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -n icedove-lang-pl
-cat << 'EOF'
-NOTE: You must also change your default useragent locale:
-  Open Icedove and go to Edit>Preferences>Advenced>General>Config Editor then
-  find "general.useragent.locale" and change value
-  to "pl-PL" then restart Icedove.
+# NOTE:
+# I wish i could use banner macro here, but it does not work with nesting well
+%define post_banner() \
+cat >&2 <<EOF\
+NOTE:\
+  To change your default useragent locale: \
+  Open Icedove and go to Edit>Preferences>Advenced>General>Config Editor then \
+  find "general.useragent.locale" and change value \
+  to "%2" then restart Icedove. \
+\
+  Or install "Quick Locale Switcher" extension \
+\
+EOF\
+%{nil}
 
-EOF
+%{nil}
+%post -n icedove-lang-et
+%post_banner et et-EE
+
+%post -n icedove-lang-pl
+%post_banner pl pl-PL
 
 %files -n icedove-lang-et
 %defattr(644,root,root,755)
