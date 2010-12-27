@@ -2,14 +2,14 @@
 #  - do something with *.rdf file, there is file conflict with other lang packages
 Summary:	Language packs for Icedove
 Name:		icedove-languages
-Version:	3.1.6
+Version:	3.1.7
 Release:	1
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	38deb4a544b4055fd3dd8fbfd489393c
+# Source0-md5:	58cd0590f2425f7267138e65dfaf3d46
 Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
-# Source1-md5:	cbed77cb75b8158b5805b48686a4e836
+# Source1-md5:	191aa6e799251259e6ed1c972d6e70a0
 URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
@@ -67,13 +67,13 @@ unpack() {
 		locale/$lang/messenger/aboutDialog.dtd \
 		locale/$lang/messenger-newsblog/newsblog.properties
 
-	sed -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
+	%{__sed} -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
 		locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties
-	sed -i -e 's/Thunderbird/Icedove/g;' locale/$lang/messenger-newsblog/newsblog.properties
+	%{__sed} -i -e 's/Thunderbird/Icedove/g;' locale/$lang/messenger-newsblog/newsblog.properties
 
 	grep -e '\<ENTITY' locale/$lang/messenger/aboutDialog.dtd \
 		> locale/$lang/messenger/aboutDialog.dtd.new
-	sed -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
+	%{__sed} -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
 		locale/$lang/messenger/aboutDialog.dtd.new
 	mv -f locale/$lang/messenger/aboutDialog.dtd.new locale/$lang/messenger/aboutDialog.dtd
 
@@ -81,7 +81,7 @@ unpack() {
 		locale/$lang/messenger/aboutDialog.dtd \
 		locale/$lang/messenger-newsblog/newsblog.properties
 
-	rm -rf locale
+	%{__rm} -r locale
 	cd ../..
 }
 %define __unzip unpack
