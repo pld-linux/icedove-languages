@@ -2,14 +2,14 @@
 #  - do something with *.rdf file, there is file conflict with other lang packages
 Summary:	Language packs for Icedove
 Name:		icedove-languages
-Version:	3.1.7
+Version:	3.1.8
 Release:	1
 License:	GPL
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	58cd0590f2425f7267138e65dfaf3d46
+# Source0-md5:	194b30bd8ba8109c2a7a7be767ca14f3
 Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
-# Source1-md5:	191aa6e799251259e6ed1c972d6e70a0
+# Source1-md5:	a5e841aa80030fd005d65476ccb4620d
 URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
