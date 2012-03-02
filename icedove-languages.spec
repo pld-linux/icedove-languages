@@ -1,24 +1,31 @@
 # TODO:
 #  - do something with *.rdf file, there is file conflict with other lang packages
+# UPDATING:
+%if 0
+rm -vf *.xpi
+./builder -g
+V=10.0.2
+U=http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/$V/linux-i686/
+curl -s $U | sed -ne 's,.*href="\([^"]\+\)/".*,'"$U"'xpi/\1.xpi,p'
+%endif
+
 Summary:	Language packs for Icedove
 Name:		icedove-languages
-Version:	3.1.11
-Release:	1
-License:	GPL
+Version:	10.0.2
+Release:	0.1
+License:	MPL 1.1 or GPL v2+ or LGPL v2.1+
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	196b25698d8d406c7127e905fc9eae2c
+# Source0-md5:	eec9ba7a105d0b215451fc49157fc709
 Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
-# Source1-md5:	58f5afeb979ee2406c2330bf8f5db5fe
+# Source1-md5:	f7c85b38a54f6dd05825aa497ca751bd
 URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 BuildRequires:	zip
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		icedovedir		%{_datadir}/icedove
-%define		chromedir		%{icedovedir}/chrome
+%define		icedovedir		%{_libdir}/icedove
 
 %description
 Language packs for Icedove.
@@ -51,90 +58,42 @@ Polskie pliki językowe dla Icedove.
 unpack() {
     local args="$1" file="$2"
 	local lang=$(basename $file .xpi)
-	%{__unzip} $args -d $lang $file
+	install -d $lang
 
-	locale=$(awk -vl=$lang '$1 == l{print $2}' %{_builddir}/locales.txt)
+	fix1=chrome/$lang/locale/$lang/branding/brand.{dtd,properties}
+        fix2=chrome/$lang/locale/$lang/feedback/main.{dtd,properties}
+	# rebrand locale for Iceweasel
 	cd $lang
-	install -d defaults/profile
-	sed -i -e "s@chrome/$lang@$locale@" chrome.manifest
-	[ $lang = $locale ] || mv chrome/$lang.jar chrome/$locale.jar
-	mv chrome.manifest chrome/$locale.manifest
-	mv install.rdf defaults/profile
-
-	# rebrand locale for Icedove
-	cd chrome
-	%{__unzip} -q $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
-		locale/$lang/messenger/aboutDialog.dtd \
-		locale/$lang/messenger-newsblog/newsblog.properties
-
-	%{__sed} -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' \
-		locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties
-	%{__sed} -i -e 's/Thunderbird/Icedove/g;' locale/$lang/messenger-newsblog/newsblog.properties
-
-	grep -e '\<ENTITY' locale/$lang/messenger/aboutDialog.dtd \
-		> locale/$lang/messenger/aboutDialog.dtd.new
-	%{__sed} -i -e '/copyrightText/s/^\(.*\)\..*Thunderbird.*/\1\./g; s/\r//g; /copyrightText/s/$/" >/g;' \
-		locale/$lang/messenger/aboutDialog.dtd.new
-	mv -f locale/$lang/messenger/aboutDialog.dtd.new locale/$lang/messenger/aboutDialog.dtd
-
-	zip -q0 $locale.jar locale/$lang/branding/brand.dtd locale/$lang/branding/brand.properties \
-		locale/$lang/messenger/aboutDialog.dtd \
-		locale/$lang/messenger-newsblog/newsblog.properties
-
-	%{__rm} -r locale
-	cd ../..
+	cp -p $file .
+	unzip -q $lang.xpi install.rdf $fix1 $fix2
+	sed -i -e 's/Mozilla Firefox/Iceweasel/g; s/Firefox/Iceweasel/g;' $fix1
+	sed -i -e 's/Firefox/Iceweasel/g;' $fix2
+	zip -q0 $lang.xpi $fix1 $fix2
+	if ! grep -q "<em:minVersion>%{version}</em:minVersion>" install.rdf; then
+		echo "$lang.xpi most likely doesn't work with icedove %{version}!" >&2
+		exit 1
+	fi
+	%{__rm} -rf chrome install.rdf
+	cd ..
 }
 %define __unzip unpack
-# LANGUAGE LOCALE
-cat <<'EOF' > locales.txt
-et et-EE
-pl pl-PL
-EOF
-%setup -qcT -a0 -a1
+%setup -qcT %(seq -f '-a %g' 0 1 | xargs)
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{chromedir},%{icedovedir}/defaults/profile}
-for a in */chrome; do
-	cp -a $a/* $RPM_BUILD_ROOT%{chromedir}
+install -d $RPM_BUILD_ROOT%{icedovedir}/extensions
+for a in */*.xpi; do
+	basename=$(basename $a .xpi)
+	cp -p $a $RPM_BUILD_ROOT%{icedovedir}/extensions/langpack-$basename@thunderbird.mozilla.org.xpi
 done
-
-# FIXME one language to dominate
-cp -a pl/defaults/profile/*.rdf $RPM_BUILD_ROOT%{icedovedir}/defaults/profile
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-# NOTE:
-# I wish i could use banner macro here, but it does not work with nesting well
-%define post_banner() \
-cat >&2 <<EOF\
-NOTE:\
-  To change your default useragent locale: \
-  Open Icedove and go to Edit>Preferences>Advenced>General>Config Editor then \
-  find "general.useragent.locale" and change value \
-  to "%2" then restart Icedove. \
-\
-  Or install "Quick Locale Switcher" extension \
-\
-EOF\
-%{nil}
-
-%{nil}
-%post -n icedove-lang-et
-%post_banner et et-EE
-
-%post -n icedove-lang-pl
-%post_banner pl pl-PL
-
 %files -n icedove-lang-et
 %defattr(644,root,root,755)
-%{chromedir}/et-EE.jar
-%{chromedir}/et-EE.manifest
+%{icedovedir}/extensions/langpack-et@thunderbird.mozilla.org.xpi
 
 %files -n icedove-lang-pl
 %defattr(644,root,root,755)
-%{chromedir}/pl-PL.jar
-%{chromedir}/pl-PL.manifest
-#%{chromedir}/chromelist.txt
-%{icedovedir}/defaults/profile/*.rdf
+%{icedovedir}/extensions/langpack-pl@thunderbird.mozilla.org.xpi
