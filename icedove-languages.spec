@@ -10,15 +10,16 @@ curl -s $U | sed -ne 's,.*href="\([^"]\+\)/".*,'"$U"'xpi/\1.xpi,p'
 %endif
 
 Summary:	Language packs for Icedove
+Summary(pl.UTF-8):	Pakiety językowe dla Icedove
 Name:		icedove-languages
 Version:	10.0.2
 Release:	0.1
 License:	MPL 1.1 or GPL v2+ or LGPL v2.1+
 Group:		I18n
-Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
-# Source0-md5:	eec9ba7a105d0b215451fc49157fc709
-Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
-# Source1-md5:	f7c85b38a54f6dd05825aa497ca751bd
+Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/et.xpi
+# Source0-md5:	f7c85b38a54f6dd05825aa497ca751bd
+Source1:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/pl.xpi
+# Source1-md5:	eec9ba7a105d0b215451fc49157fc709
 URL:		http://www.pld-linux.org/Packages/Icedove
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
@@ -30,14 +31,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Language packs for Icedove.
 
+%description -l pl.UTF-8
+Pakiety językowe dla Icedove.
+
 %package -n icedove-lang-et
 Summary:	Estonian resources for Icedove
+Summary(pl.UTF-8):	Estońskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
 
 %description -n icedove-lang-et
 Estonian resources for Icedove.
+
+%description -n icedove-lang-et -l pl.UTF-8
+Estońskie pliki językowe dla Icedove.
 
 %package -n icedove-lang-pl
 Summary:	Polish resources for Icedove
