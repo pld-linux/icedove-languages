@@ -146,6 +146,7 @@ Summary(pl.UTF-8):	Arabskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ar
 
 %description -n icedove-lang-ar
 Arabic resources for Icedove.
@@ -159,6 +160,7 @@ Summary(pl.UTF-8):	Asturskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ast
 
 %description -n icedove-lang-ast
 Asturian resources for Icedove.
@@ -172,6 +174,7 @@ Summary(pl.UTF-8):	Białoruskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-be
 
 %description -n icedove-lang-be
 Belarusian resources for Icedove.
@@ -185,6 +188,7 @@ Summary(pl.UTF-8):	Bułgarskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-bg
 
 %description -n icedove-lang-bg
 Bulgarian resources for Icedove.
@@ -198,6 +202,7 @@ Summary(pl.UTF-8):	Bengalskie pliki językowe dla Icedove (wersja dla Bangladesz
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-bn
 
 %description -n icedove-lang-bn
 Bengali (Bangladesh) resources for Icedove.
@@ -211,6 +216,7 @@ Summary(pl.UTF-8):	Bretońskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-br
 
 %description -n icedove-lang-br
 Breton resources for Icedove.
@@ -224,6 +230,7 @@ Summary(pl.UTF-8):	Katalońskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ca
 
 %description -n icedove-lang-ca
 Catalan resources for Icedove.
@@ -237,6 +244,7 @@ Summary(pl.UTF-8):	Czeskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-cs
 
 %description -n icedove-lang-cs
 Czech resources for Icedove.
@@ -250,6 +258,7 @@ Summary(pl.UTF-8):	Duńskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-da
 
 %description -n icedove-lang-da
 Danish resources for Icedove.
@@ -263,6 +272,7 @@ Summary(pl.UTF-8):	Niemieckie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-de
 
 %description -n icedove-lang-de
 German resources for Icedove.
@@ -276,6 +286,7 @@ Summary(pl.UTF-8):	Greckie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-el
 
 %description -n icedove-lang-el
 Greek resources for Icedove.
@@ -289,6 +300,7 @@ Summary(pl.UTF-8):	Angielskie (brytyjskie) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-en_GB
 
 %description -n icedove-lang-en_GB
 English (British) resources for Icedove.
@@ -302,6 +314,7 @@ Summary(pl.UTF-8):	Angielskie (amerykańskie) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-en_US
 
 %description -n icedove-lang-en_US
 English (American) resources for Icedove.
@@ -315,6 +328,7 @@ Summary(pl.UTF-8):	Hiszpańskie pliki językowe dla Icedove (wersja dla Andory)
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-es_AR
 
 %description -n icedove-lang-es_AR
 Spanish (Andorra) resources for Icedove.
@@ -328,6 +342,7 @@ Summary(pl.UTF-8):	Hiszpańskie pliki językowe dla Icedove (wersja dla Hiszpani
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-es
 
 %description -n icedove-lang-es
 Spanish (Spain) resources for Icedove.
@@ -341,6 +356,7 @@ Summary(pl.UTF-8):	Estońskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-et
 
 %description -n icedove-lang-et
 Estonian resources for Icedove.
@@ -354,6 +370,7 @@ Summary(pl.UTF-8):	Baskijskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-eu
 
 %description -n icedove-lang-eu
 Basque resources for Icedove.
@@ -367,6 +384,7 @@ Summary(pl.UTF-8):	Fińskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-fi
 
 %description -n icedove-lang-fi
 Finnish resources for Icedove.
@@ -380,6 +398,7 @@ Summary(pl.UTF-8):	Francuskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-fr
 
 %description -n icedove-lang-fr
 French resources for Icedove.
@@ -393,6 +412,7 @@ Summary(pl.UTF-8):	Fryzyjskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-fy
 
 %description -n icedove-lang-fy
 Frisian resources for Icedove.
@@ -406,6 +426,7 @@ Summary(pl.UTF-8):	Irlandzkie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ga
 
 %description -n icedove-lang-ga
 Irish resources for Icedove.
@@ -419,6 +440,7 @@ Summary(pl.UTF-8):	Szkockie (gaelickie) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-gd
 
 %description -n icedove-lang-gd
 Gaelic resources for Icedove.
@@ -432,6 +454,7 @@ Summary(pl.UTF-8):	Galicyjskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-gl
 
 %description -n icedove-lang-gl
 Galician resources for Icedove.
@@ -445,6 +468,7 @@ Summary(pl.UTF-8):	Hebrajskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-he
 
 %description -n icedove-lang-he
 Hebrew resources for Icedove.
@@ -472,6 +496,7 @@ Summary(pl.UTF-8):	Węgierskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-hu
 
 %description -n icedove-lang-hu
 Hungarian resources for Icedove.
@@ -499,6 +524,7 @@ Summary(pl.UTF-8):	Indonezyjskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-id
 
 %description -n icedove-lang-id
 Indonesian resources for Icedove.
@@ -512,6 +538,7 @@ Summary(pl.UTF-8):	Islandzkie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-is
 
 %description -n icedove-lang-is
 Icelandic resources for Icedove.
@@ -525,6 +552,7 @@ Summary(pl.UTF-8):	Włoskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-it
 
 %description -n icedove-lang-it
 Italian resources for Icedove.
@@ -538,6 +566,7 @@ Summary(pl.UTF-8):	Japońskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ja
 
 %description -n icedove-lang-ja
 Japanese resources for Icedove.
@@ -551,6 +580,7 @@ Summary(pl.UTF-8):	Koreańskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ko
 
 %description -n icedove-lang-ko
 Korean resources for Icedove.
@@ -564,6 +594,7 @@ Summary(pl.UTF-8):	Litewskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-lt
 
 %description -n icedove-lang-lt
 Lithuanian resources for Icedove.
@@ -577,6 +608,7 @@ Summary(pl.UTF-8):	Norweskie (bokmaal) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-nb
 
 %description -n icedove-lang-nb
 Norwegian Bokmaal resources for Icedove.
@@ -590,6 +622,7 @@ Summary(pl.UTF-8):	Holenderskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-nl
 
 %description -n icedove-lang-nl
 Dutch resources for Icedove.
@@ -603,6 +636,7 @@ Summary(pl.UTF-8):	Norweskie (nynorsk) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-nn
 
 %description -n icedove-lang-nn
 Norwegian Nynorsk resources for Icedove.
@@ -616,6 +650,7 @@ Summary(pl.UTF-8):	Pendżabskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-pa
 
 %description -n icedove-lang-pa
 Panjabi resources for Icedove.
@@ -644,6 +679,7 @@ Summary(pl.UTF-8):	Portugalskie (brazylijskie) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-pt_BR
 
 %description -n icedove-lang-pt_BR
 Portuguese (Brazil) resources for Icedove.
@@ -657,6 +693,7 @@ Summary(pl.UTF-8):	Portugalskie pliki językowe dla Icedove (wersja dla Portugal
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-pt
 
 %description -n icedove-lang-pt
 Portuguese (Portugal) resources for Icedove.
@@ -670,6 +707,7 @@ Summary(pl.UTF-8):	Retoromańskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-rm
 
 %description -n icedove-lang-rm
 Romansh resources for Icedove.
@@ -683,6 +721,7 @@ Summary(pl.UTF-8):	Rumuńskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ro
 
 %description -n icedove-lang-ro
 Romanian resources for Icedove.
@@ -696,6 +735,7 @@ Summary(pl.UTF-8):	Rosyjskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ru
 
 %description -n icedove-lang-ru
 Russian resources for Icedove.
@@ -709,6 +749,7 @@ Summary(pl.UTF-8):	Syngaleskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-si
 
 %description -n icedove-lang-si
 Sinhala resources for Icedove.
@@ -722,6 +763,7 @@ Summary(pl.UTF-8):	Słowackie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-sk
 
 %description -n icedove-lang-sk
 Slovak resources for Icedove.
@@ -735,6 +777,7 @@ Summary(pl.UTF-8):	Słoweńskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-sl
 
 %description -n icedove-lang-sl
 Slovene resources for Icedove.
@@ -748,6 +791,7 @@ Summary(pl.UTF-8):	Albańskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-sq
 
 %description -n icedove-lang-sq
 Albanian resources for Icedove.
@@ -761,6 +805,7 @@ Summary(pl.UTF-8):	Serbskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-sr
 
 %description -n icedove-lang-sr
 Serbian resources for Icedove.
@@ -774,6 +819,7 @@ Summary(pl.UTF-8):	Szwedzkie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-sv
 
 %description -n icedove-lang-sv
 Swedish resources for Icedove.
@@ -787,6 +833,7 @@ Summary(pl.UTF-8):	Tamilskie pliki językowe dla Icedove (wersja dla Sri Lanki)
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-ta_LK
 
 %description -n icedove-lang-ta_LK
 Tamil (Sri Lanka) resources for Icedove.
@@ -800,6 +847,7 @@ Summary(pl.UTF-8):	Tureckie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-tr
 
 %description -n icedove-lang-tr
 Turkish resources for Icedove.
@@ -813,6 +861,7 @@ Summary(pl.UTF-8):	Ukraińskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-uk
 
 %description -n icedove-lang-uk
 Ukrainian resources for Icedove.
@@ -826,6 +875,7 @@ Summary(pl.UTF-8):	Wietnamskie pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-vi
 
 %description -n icedove-lang-vi
 Vietnamese resources for Icedove.
@@ -839,6 +889,7 @@ Summary(pl.UTF-8):	Chińskie (uproszczone) pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-zh_CN
 
 %description -n icedove-lang-zh_CN
 Simplified Chinese resources for Icedove.
@@ -852,6 +903,7 @@ Summary(pl.UTF-8):	Chińskie tradycyjne pliki językowe dla Icedove
 Group:		I18n
 Requires:	icedove >= %{version}
 Provides:	icedove-lang-resources = %{version}
+Obsoletes:	mozilla-thunderbird-lang-zh_TW
 
 %description -n icedove-lang-zh_TW
 Traditional Chinese resources for Icedove.
