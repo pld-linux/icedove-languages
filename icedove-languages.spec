@@ -13,7 +13,7 @@ Summary:	Language packs for Icedove
 Summary(pl.UTF-8):	Pakiety językowe dla Icedove
 Name:		icedove-languages
 Version:	24.2.0
-Release:	1
+Release:	2
 License:	MPL 1.1 or GPL v2+ or LGPL v2.1+
 Group:		I18n
 Source0:	http://releases.mozilla.org/pub/mozilla.org/thunderbird/releases/%{version}/linux-i686/xpi/ar.xpi
@@ -918,14 +918,12 @@ unpack() {
 	install -d $lang
 
 	fix1=chrome/$lang/locale/$lang/branding/brand.{dtd,properties}
-        fix2=chrome/$lang/locale/$lang/feedback/main.{dtd,properties}
 	# rebrand locale for Icedove
 	cd $lang
 	cp -p $file .
-	unzip -q $lang.xpi install.rdf $fix1 $fix2
+	unzip -q $lang.xpi install.rdf $fix1
 	sed -i -e 's/Mozilla Thunderbird/Icedove/g; s/Thunderbird/Icedove/g;' $fix1
-	sed -i -e 's/Thunderbird/Icedove/g;' $fix2
-	zip -q0 $lang.xpi $fix1 $fix2
+	zip -q0 $lang.xpi $fix1
 	if ! grep -q "<em:minVersion>%{version}</em:minVersion>" install.rdf; then
 		echo "$lang.xpi most likely doesn't work with icedove %{version}!" >&2
 		exit 1
